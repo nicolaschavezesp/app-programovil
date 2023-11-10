@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'duoc2',
+  appId: 'com.example.app',
+  appName: 'Registrappduoc',
   webDir: 'www',
   server: {
     androidScheme: 'https'

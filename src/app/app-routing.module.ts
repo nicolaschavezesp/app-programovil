@@ -38,7 +38,11 @@ const routes: Routes = [
   {
     path: 'home-estudiante',
     loadChildren: () => import('./home-estudiante/home-estudiante.module').then( m => m.HomeEstudiantePageModule)
+  },  {
+    path: 'register',
+    loadChildren: () => import('./register/register.module').then( m => m.RegisterPageModule)
   },
+
 
 ];
 
