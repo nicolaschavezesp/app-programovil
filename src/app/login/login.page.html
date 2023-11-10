@@ -3,13 +3,9 @@
 
   <ion-card class="login-card">
     <ion-card-header>
-      <ion-img [@slideIn] src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg" class="logo"></ion-img> <!-- Reemplaza 'assets/logo.png' con la ubicación de tu logo -->
+      <ion-img [@slideIn] src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg" class="logo"></ion-img>
     </ion-card-header>
 
-    
-
-
-    
     <ion-card-content>
       <ion-list lines="none">
         <ion-item class="input-field">
@@ -24,12 +20,15 @@
       </ion-list>
 
       <ion-button class="login-button" expand="full" shape="round" color="secondary" (click)="agregarDatos()">Ingresar</ion-button>
-      
+
       <ion-button expand="full" shape="round" color="secondary" class="login-button" (click)="restablecer()">
         Restablecer contraseña
       </ion-button>
-
     </ion-card-content>
   </ion-card>
-</ion-content>
 
+  <!-- Botón para el modo docente -->
+  <ion-button expand="full" shape="round" color="secondary" class="login-button" (click)="irAModoDocente()">
+    Ir Modo Docente
+  </ion-button>
+</ion-content>

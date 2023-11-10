@@ -35,5 +35,10 @@ export class LoginPage {
     // Aquí especifica la ruta de la página de inicio de sesión (login)
     this.router.navigate(['/recuperar']);
   }
+
+  irAModoDocente() {
+    // Aquí especifica la ruta de la página de inicio de sesión para el modo estudiante (login)
+    this.router.navigate(['/logindocente']);
+  }
 }
 
