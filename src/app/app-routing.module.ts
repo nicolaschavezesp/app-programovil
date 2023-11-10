@@ -31,6 +31,14 @@ const routes: Routes = [
     path: 'logindocente',
     loadChildren: () => import('./logindocente/logindocente.module').then( m => m.LogindocentePageModule)
   },
+  {
+    path: 'qr-code',
+    loadChildren: () => import('./qr-code/qr-code.module').then( m => m.QrCodePageModule)
+  },
+  {
+    path: 'home-estudiante',
+    loadChildren: () => import('./home-estudiante/home-estudiante.module').then( m => m.HomeEstudiantePageModule)
+  },
 
 ];
 

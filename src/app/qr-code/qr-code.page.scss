@@ -1,0 +1,39 @@
+/* qr-code.page.scss */
+
+ion-header {
+    ion-toolbar {
+      --ion-background-color: #3880ff; /* Cambia el color de fondo del encabezado según tus preferencias */
+      color: #fff; /* Cambia el color del texto del encabezado según tus preferencias */
+    }
+  }
+  
+  ion-content {
+    ion-padding {
+      text-align: center;
+    }
+  
+    /* Añade estilos adicionales según sea necesario */
+  }
+  
+  ion-button {
+    --ion-color: #3880ff; /* Cambia el color del botón de cierre según tus preferencias */
+    --ion-color-contrast: #fff; /* Cambia el color del texto del botón de cierre según tus preferencias */
+  }
+  
+  /* Agrega estilos para centrar la "X" en el modal */
+.modal-content {
+    text-align: center;
+  }
+  
+  /* Agrega estilos para centrar la "X" vertical y horizontalmente */
+  ion-button {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+  }
+  
+  /* Opcional: Estilos para personalizar el aspecto de la "X" */
+  ion-icon {
+    font-size: 24px;
+    color: #000; /* Puedes ajustar el color según tus preferencias */
+  }
