@@ -1,0 +1,33 @@
+/* Estilos para la página de configuraciones */
+
+ion-header {
+    ion-toolbar {
+      --background: #007bff;
+      color: #fff;
+    }
+  }
+  
+  ion-content {
+    --ion-background-color: #f0f0f0;
+  }
+  
+  .setting-card {
+    ion-card-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  
+      ion-toggle {
+        --background: #007bff;
+        --handle-background: #fff;
+        --handle-background-checked: #007bff;
+      }
+    }
+  
+    margin-bottom: 20px;
+  }
+  
+  ion-button {
+    margin-top: 20px;
+  }
+  

@@ -1,0 +1,36 @@
+/* Estilos para las páginas de perfil y configuraciones */
+
+ion-header {
+    ion-toolbar {
+      --background: #007bff;
+      color: #fff;
+    }
+  }
+  
+  ion-content {
+    --ion-background-color: #f0f0f0;
+  }
+  
+  .profile-card {
+    ion-card-content {
+      text-align: center;
+  
+      .profile-picture {
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        margin: 20px auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+  
+  ion-list {
+    ion-item {
+      --inner-padding-end: 20px;
+      ion-label {
+        font-size: 1rem;
+      }
+    }
+  }
+  
