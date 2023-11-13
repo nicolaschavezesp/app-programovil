@@ -37,7 +37,11 @@ const routes: Routes = [
   },
   { path: 'not-found', component: NotFoundComponent },
   { path: '', redirectTo: '/login', pathMatch: 'full' }, // Redirige al login por defecto
-  { path: '**', redirectTo: '/not-found' }, // Redirige a 'not-found' para rutas no válidas
+  { path: '**', redirectTo: '/not-found' },   {
+    path: 'pageqr',
+    loadChildren: () => import('./pageqr/pageqr.module').then( m => m.PageqrPageModule)
+  },
+// Redirige a 'not-found' para rutas no válidas
 ];
 
 @NgModule({

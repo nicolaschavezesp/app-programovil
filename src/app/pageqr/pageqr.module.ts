@@ -4,19 +4,17 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { LoginPageRoutingModule } from './login-routing.module';
+import { PageqrPageRoutingModule } from './pageqr-routing.module';
 
-import { LoginPage } from './login.page';
-
-import { Geolocation } from '@capacitor/geolocation';
+import { PageqrPage } from './pageqr.page';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    LoginPageRoutingModule
+    PageqrPageRoutingModule
   ],
-  declarations: [LoginPage]
+  declarations: [PageqrPage]
 })
-export class LoginPageModule {}
+export class PageqrPageModule {}

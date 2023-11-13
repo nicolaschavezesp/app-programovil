@@ -25,7 +25,7 @@ export class AppComponent {
   }
 
   private isValidRoute(url: string): boolean {
-    const validRoutes = ['/home', '/login', '/configuraciones', '/perfil', '/recuperar', '/qr-code', '/register', '/homeprincipal'];
+    const validRoutes = ['/home', '/login', '/pageqr', '/perfil', '/recuperar', '/qr-code', '/register', '/homeprincipal'];
 
     // Elimina los parámetros de la URL antes de verificar la validez
     const urlWithoutParams = url.split('?')[0];

@@ -12,6 +12,9 @@ const config: CapacitorConfig = {
   plugins: {
     Storage: {
       allowed: ["get", "set", "remove"]
+    },
+    Geolocation: {
+      someConfig: true
     }
   }
 };

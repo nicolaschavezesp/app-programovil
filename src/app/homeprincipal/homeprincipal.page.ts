@@ -52,12 +52,14 @@ export class HomeprincipalPage {
   handleDecodeResult(result: any) {
     if (result) {
       console.log('Código QR leído:', result.getText());
+      this.router.navigate(['/login']);
     } else {
       console.log('No se detectó ningún código QR.');
     }
   }
 
   handleQRScan(event: any) {
+    this.router.navigate(['/perfil'])
     console.log('Código QR escaneado:', event);
   }
 
