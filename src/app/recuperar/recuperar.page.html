@@ -1,28 +1,32 @@
-<ion-content class="ion-padding login-bg">
-  <div class="background-blur"></div>
 
-  <ion-card class="login-card">
-    <ion-card-header>
-      <ion-img [@slideIn] src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg" class="logo"></ion-img> <!-- Reemplaza 'assets/logo.png' con la ubicación de tu logo -->
-    </ion-card-header>
 
+
+<ion-content class="ion-padding">
+
+
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>¿Olvidaste tu contraseña?</ion-title>
+      <ion-buttons slot="start">
+        <ion-button (click)="goBackLogin()">
+          <ion-icon name="chevron-back"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
     
-
-
+  </ion-header>
+  <div class="background"></div>
+  <div class="login-container"> 
+   
+      <!-- Círculo con el logo -->
+     
     
-    <ion-card-content>
-      <ion-list lines="none">
-        <ion-item class="input-field">
-          <ion-label position="floating">Usuario</ion-label>
-          <ion-input [(ngModel)]="usuario" name="usuario" type="text" required minlength="3" maxlength="8"></ion-input>
-        </ion-item>
-      </ion-list>
-      
-      <ion-button expand="full" shape="round" color="secondary" class="login-button" (click)="recuperarDatos()">
-        Recuperar
-      </ion-button>
+    <ion-input placeholder="Usuario" clearInput>
 
-    </ion-card-content>
-  </ion-card>
+    </ion-input>
+
+    <ion-button expand="full" class="login-button" (click)="recuperarDatos()">
+      Recuperar
+    </ion-button>
+  </div>
 </ion-content>
-

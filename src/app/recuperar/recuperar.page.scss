@@ -1,0 +1,40 @@
+ion-content {
+    .background {
+      background-image: url('./backgroundf.gif');
+      background-size: cover;
+      background-position: center;
+      position: fixed;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: -1;
+    }
+    .login-container {
+        background-image: url('./fondoforms.gif');
+        background-size: cover;
+        background-position: center;
+        padding: 20px; /* Ajusta el espaciado según sea necesario */
+        color: white; /* Establece el color del texto en blanco */
+        text-align: center; /* Centra el texto horizontalmente */
+        margin-top: 50%;
+      }
+      
+
+      .logo-icon {
+        color: rgb(255, 255, 255); /* Establece el color del icono del logo en blanco */
+      }
+    
+      ion-toolbar {
+        --background: #020000; /* Color de fondo de la barra de herramientas */
+        color: #ffffff; /* Color del texto en la barra de herramientas */
+      
+        ion-buttons {
+          ion-button {
+            --color: #ffffff; /* Color de los botones en la barra de herramientas */
+          }
+        }
+      }
+      
+  }
+  
