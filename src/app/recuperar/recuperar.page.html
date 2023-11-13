@@ -1,9 +1,6 @@
-
-
+<!-- src/app/recuperar/recuperar.page.html -->
 
 <ion-content class="ion-padding">
-
-
   <ion-header>
     <ion-toolbar>
       <ion-title>¿Olvidaste tu contraseña?</ion-title>
@@ -13,18 +10,10 @@
         </ion-button>
       </ion-buttons>
     </ion-toolbar>
-    
   </ion-header>
   <div class="background"></div>
-  <div class="login-container"> 
-   
-      <!-- Círculo con el logo -->
-     
-    
-    <ion-input placeholder="Usuario" clearInput>
-
-    </ion-input>
-
+  <div class="login-container">
+    <ion-input [(ngModel)]="usuario" placeholder="Correo Electrónico" clearInput></ion-input>
     <ion-button expand="full" class="login-button" (click)="recuperarDatos()">
       Recuperar
     </ion-button>

@@ -33,6 +33,7 @@
     "@zxing/library": "^0.20.0",
     "@zxing/ngx-scanner": "^16.1.0",
     "ionicons": "^7.0.0",
+    "nodemailer": "^6.9.7",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

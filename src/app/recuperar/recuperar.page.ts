@@ -1,36 +1,46 @@
+// src/app/recuperar/recuperar.page.ts
+
 import { Component } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
-import { Router } from '@angular/router';
-import { slideInAnimation } from '../Animations/slide-in.animation';
+import { UserService } from '../services/user.service';  // Importa tu servicio de usuario
 
 @Component({
   selector: 'app-recuperar',
   templateUrl: './recuperar.page.html',
   styleUrls: ['./recuperar.page.scss'],
-  animations: [slideInAnimation],
 })
 export class RecuperarPage {
-  usuario: string = ''; // Inicializa la propiedad usuario
+  usuario: string = '';
 
   constructor(
     private navCtrl: NavController,
-    private router: Router,
+    private userService: UserService,
     private toastController: ToastController
   ) {}
 
   async recuperarDatos() {
-    // Validar los campos
-    if (this.isValidUser(this.usuario)) {
-      // Redirigir a la página de inicio de sesión
-      await this.presentToast('Revisa tu bandeja, te hemos enviado tu nueva contraseña.');
-      
-    } else {
-      // Mostrar un mensaje de error
-      await this.presentToast('Ingresa un usuario válido ');
+    try {
+      // Validar los campos
+      if (this.isValidUser(this.usuario)) {
+        // Intenta recuperar la contraseña
+        const result = await this.userService.recoverPassword(this.usuario);
+        if (result) {
+          // Muestra un mensaje de éxito o redirige a otra página
+          await this.presentToast(result);
+        } else {
+          // Muestra un mensaje de error (usuario no encontrado)
+          await this.presentToast('Usuario no encontrado.');
+        }
+      } else {
+        // Muestra un mensaje de error
+        await this.presentToast('Ingresa un usuario válido.');
+      }
+    } catch (error) {
+      console.error('Error al recuperar la contraseña:', error);
     }
   }
-  
-  // Función para verificar si el usuario es válido (tiene al menos dos caracteres y menos de 50)
+
+  // Función para verificar si el usuario es válido
   private isValidUser(input: string): boolean {
     const trimmedInput = input.trim();
     return trimmedInput.length >= 2;
@@ -39,15 +49,14 @@ export class RecuperarPage {
   async presentToast(message: string) {
     const toast = await this.toastController.create({
       message: message,
-      duration: 3000, // Duración del mensaje en milisegundos
-      position: 'bottom', // Posición del mensaje
-      color: 'primary', // Color del mensaje
+      duration: 3000,
+      position: 'bottom',
+      color: 'primary',
     });
     toast.present();
   }
 
-  
   goBackLogin() {
-    this.navCtrl.navigateBack('/login');  // Navegar hacia atrás al login
+    this.navCtrl.navigateBack('/login');
   }
 }
