@@ -20,7 +20,7 @@ export class LoginPage {
     // Validar los campos
     if (this.usuario.length >= 3 && this.usuario.length <= 8 && /^\d{4}$/.test(this.contrasena)) {
       // Los datos son válidos, pasar a la página Home
-      this.navCtrl.navigateForward('/home-estudiante', {
+      this.navCtrl.navigateForward('/homeprincipal', {
         queryParams: {
           usuario: this.usuario,
           contrasena: this.contrasena,
@@ -36,14 +36,16 @@ export class LoginPage {
     this.router.navigate(['/recuperar']);
   }
 
-  irAModoDocente() {
-    // Aquí especifica la ruta de la página de inicio de sesión para el modo estudiante (login)
-    this.router.navigate(['/logindocente']);
-  }
+
 
   irAregistro() {
     // Aquí especifica la ruta de la página de inicio de sesión para el modo estudiante (login)
     this.router.navigate(['/register']);
+  }
+
+  iniciarSesion() {
+    // Aquí especifica la ruta de la página de inicio de sesión para el modo estudiante (login)
+    this.router.navigate(['/homeprincipal']);
   }
 }
 

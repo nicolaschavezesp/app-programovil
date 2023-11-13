@@ -1,0 +1,50 @@
+<!-- src/app/homeprincipal/homeprincipal.page.html -->
+
+
+
+<ion-header>
+  <ion-toolbar>
+
+      <ion-buttons slot="end">
+        <ion-button (click)="cerrarSesion()">
+          Cerrar Sesión
+        </ion-button>
+      <!-- Utiliza ion-menu-button para abrir la barra lateral -->
+      
+    </ion-buttons>
+    <ion-title>
+      RegistrAPP
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  <div class="album-container">
+    <ion-card class="album" (click)="mostrarQRClases()">
+      <ion-card-header>
+        <ion-card-title>Mostrar QR Clases</ion-card-title>
+      </ion-card-header>
+      <ion-icon name="qr-code-outline" class="album-icon"></ion-icon>
+    </ion-card>
+
+    <ion-card class="album" >
+      <ion-card-header>
+        <ion-card-title>Lector QR</ion-card-title>
+      </ion-card-header>
+      <ion-icon name="camera-outline" class="album-icon"></ion-icon>
+    </ion-card>
+  </div>
+
+  <ion-row class="ion-padding">
+    <ion-col  class="animated-image">
+      <img src="assets/REGISTRAFOTO.png" alt="Imagen 1">
+    </ion-col>
+
+
+  </ion-row>
+
+
+
+</ion-content>
+
+

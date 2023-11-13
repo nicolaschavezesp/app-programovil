@@ -103,4 +103,11 @@ this.contrasena = params['contrasena'];
     // Redirige a la página de inicio de sesión (login)
     this.router.navigate(['/login']);
   }
+
+  back() {
+    // Lógica para cerrar sesión
+  
+    // Redirige a la página de inicio de sesión (login)
+    this.router.navigate(['/homeprincipal']);
+  }
 }

@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-toolbar color="primary">
+  <ion-toolbar>
     <ion-title [@slideIn] >
       <ion-img [@slideIn] src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg" class="logo"></ion-img>
       Bienvenido : {{ usuario }}!
@@ -25,19 +25,15 @@
   </ion-list>
 </ion-content>
 
-<ion-footer color="primary">
+<ion-footer >
   <ion-toolbar>
+
     <ion-buttons slot="start">
-      <ion-button (click)="abrirPerfil()">
-        <ion-icon name="person"></ion-icon>
-      </ion-button>
-      <ion-button (click)="abrirClases()">
-        <ion-icon name="book"></ion-icon>
-      </ion-button>
-      <ion-button (click)="abrirConfiguraciones()">
-        <ion-icon name="settings"></ion-icon>
+      <ion-button (click)="back()">
+        <ion-icon name="chevron-back"></ion-icon>
       </ion-button>
     </ion-buttons>
+
     <ion-buttons slot="end">
       <ion-button (click)="cerrarSesion()">
         <ion-icon name="log-out"></ion-icon>

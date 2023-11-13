@@ -1,58 +1,47 @@
-ion-content {
-  background-color: #ffffff;
-}
-
-ion-thumbnail {
-  --border-radius: 50%;
-}
-
-ion-button {
-  --background: #140b8a;
-  --color: #f7f0f0;
-  --ion-color-base: #926d6d;
-  --ion-color-contrast: #4b2a10;
-}
-
-.logo {
-  width: 180px;
-  height: 60px;
-  margin-right: 10px;
-  margin-bottom: auto;
-  margin-top: 20px;
-  animation: fade-in 1s;
-  
-}
-
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-
-
 ion-footer {
   ion-toolbar {
-    --background: rgb(72, 101, 245);
+    --background: url('./backgroundf.gif') no-repeat center center fixed;
+    background-size: cover; // Ajusta según sea necesario
   }
 
   ion-buttons[slot="start"] {
     ion-button {
       --padding-start: 8px;
       --padding-end: 8px;
+      color: #ffffff; // Color del texto del botón
+      background-color: #120101;
+      
+      
+      
+    }
+
+    ion-icon {
+      color: #ffffff; // Color del icono del botón
+      background-color: #120101;
+      
+    }
+  }
+  
+  ion-buttons[slot="end"] {
+    ion-button {
+      ion-icon {
+        color: #ffffff; // Color del icono del botón
+        background-color: #120101;
+        
+      }
     }
   }
 }
 
-@keyframes fade {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+ion-header {
+  ion-toolbar {
+    --background: url('./backgroundf.gif') no-repeat center center fixed;
+    background-size: cover; // Ajusta según sea necesario
+  }
+
+  ion-title {
+    color: #ffffff; // Ajusta el color del texto según sea necesario
+  }
 }
 
-img {
-  animation: fade 0.5s ease-in-out;
-}
+

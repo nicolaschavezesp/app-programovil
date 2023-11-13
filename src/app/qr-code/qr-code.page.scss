@@ -2,7 +2,7 @@
 
 ion-header {
     ion-toolbar {
-      --ion-background-color: #3880ff; /* Cambia el color de fondo del encabezado según tus preferencias */
+      --ion-background-color: #000102; /* Cambia el color de fondo del encabezado según tus preferencias */
       color: #fff; /* Cambia el color del texto del encabezado según tus preferencias */
     }
   }
@@ -16,7 +16,7 @@ ion-header {
   }
   
   ion-button {
-    --ion-color: #3880ff; /* Cambia el color del botón de cierre según tus preferencias */
+    --ion-color: #02060e; /* Cambia el color del botón de cierre según tus preferencias */
     --ion-color-contrast: #fff; /* Cambia el color del texto del botón de cierre según tus preferencias */
   }
   
@@ -30,6 +30,7 @@ ion-header {
     position: absolute;
     top: 5px;
     right: 5px;
+    color: #000;
   }
   
   /* Opcional: Estilos para personalizar el aspecto de la "X" */

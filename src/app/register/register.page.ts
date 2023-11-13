@@ -1,7 +1,7 @@
-// Importa la clase Storage de @capacitor/core
 import { Component } from '@angular/core';
 import { ApiService } from './api.service';
 import { Plugins } from '@capacitor/core';
+import { NavController } from '@ionic/angular';
 
 const { Storage } = Plugins;
 
@@ -21,7 +21,7 @@ export class RegisterPage {
     commune: '',
   };
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private navCtrl: NavController) {}
 
   ionViewDidEnter() {
     this.loadRegions();
@@ -53,7 +53,8 @@ export class RegisterPage {
       // Muestra un mensaje indicando que los datos se han guardado
       console.log('Datos guardados correctamente.');
 
-      // Puedes agregar más lógica aquí, como navegar a otra página, etc.
+      // Navegar a la página de inicio después del registro
+      this.navCtrl.navigateForward('/login');
 
       // Obtiene los datos almacenados para verificar
       const storedData = await (Storage as any).get({ key: 'userData' });
@@ -61,5 +62,9 @@ export class RegisterPage {
     } catch (error) {
       console.error('Error al guardar los datos:', error);
     }
+  }
+
+  goBackLogin() {
+    this.navCtrl.navigateBack('/login');  // Navegar hacia atrás al login
   }
 }

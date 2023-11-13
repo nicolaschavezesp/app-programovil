@@ -1,0 +1,88 @@
+// src/app/homeprincipal/homeprincipal.page.scss
+
+
+    ion-header {
+      --ion-background-color: #000000;
+      --ion-text-color: #ffffff;
+    }
+  
+    ion-content {
+      --background: url('./Black\ and\ White\ Elegant\ Download\ Our\ New\ App\ Instagram\ Story.gif') no-repeat center center fixed;
+      background-size: cover;
+    }
+  
+    .album-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .album {
+      width: 80%; // Ajusta el ancho según tus necesidades
+      margin: 10px;
+      border-radius: 15px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+      transition: transform 0.3s ease-in-out;
+  
+      ion-card-header {
+        color: #ffffff;
+        background: #a6ff00;
+        text-align: center;
+      }
+  
+      ion-card-title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+  
+      .album-icon {
+        font-size: 4em;
+        color: #a6ff00;
+        display: block;
+        margin: 0 auto;
+      }
+  
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  
+    .animated-image {
+      img {
+        transition: opacity 0.3s ease-in-out;
+        border-radius: 15px;
+        width: 100%; // Imágenes ocuparán el 100% del contenedor
+        height: auto; // Altura automática para mantener la proporción
+      }
+  
+      &:hover {
+        img {
+          opacity: 0.8;
+        }
+      }
+
+/* src/app/homeprincipal/homeprincipal.page.scss */
+
+ion-content {
+  --background: #121212 !important;
+  --ion-background-color: #121212 !important;
+}
+
+ion-footer {
+  --ion-background-color: #121212 !important;
+}
+
+.fixed-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 9999; /* Ajusta esto según sea necesario para que esté por encima del contenido */
+}
+
+
+
+
+    }
+
+  

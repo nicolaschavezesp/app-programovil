@@ -1,65 +1,93 @@
 
+ion-content {
+  position: relative;
 
-.background-blur {
-    background: url('./background1.gif') no-repeat center center fixed;
-    background-size: cover;
-    backdrop-filter: blur(8px); /* Aplica un efecto de desenfoque */
+  .background {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
+    background: url('./backgroundf.gif') no-repeat center center fixed;
+    background-size: cover;
+    
+    z-index: -1; /* Mueve el fondo detrás del contenido */
   }
-  
-  .login-form {
-    position: center;
-    z-index: 1;
-    padding: 20px;
-  }
-  
+}
 
-/* Añade estilos para centrar verticalmente el logo */
-.login-card {
-    background-color: rgba(255, 255, 255, 0); /* Fondo semitransparente */
-    border-radius: 200px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    animation: fadeInUp 0.5s ease-in-out;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center; /* Centra verticalmente */
-    height: 80%;
+.logo-container {
+    position: absolute;
+    top: -25px; /* Ajusta según sea necesario */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    width: 60px; /* Ajusta según sea necesario */
+    height: 60px; /* Ajusta según sea necesario */
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg');
+    background-size: contain; /* Ajusta según tus necesidades (cover, contain, etc.) */
+    background-repeat: no-repeat; /* Evita la repetición del fondo */
+    background-position: center;
+    padding: 10px;
+    border-radius: 50%;
+    z-index: 2; /* Asegura que esté sobre el fondo */
+
   }
+
+  .logo-icon {
+    font-size: 40px; /* Ajusta según sea necesario */
+    color: #3498db; /* Color del logo (azul en este caso) */
+  }
+
+.login-container {
+  position: relative;
+  z-index: 1; /* Asegura que el formulario esté sobre el fondo */
+  max-width: 300px;
+  margin: auto;
+  text-align: center;
+  margin-top: 50%;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.989);
+  background-color: aliceblue;
+  background-image: url("./fondoforms.gif");
+ 
   
-  .logo {
-    width: 100px;
-    height: auto;
+  ion-input {
+    margin-bottom: 15px;
+    border-radius: 5px;
+    color: #ffffff;
+    position: relative;
+
+    ion-icon {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      margin-left: 40%; // Ajusta según sea necesario
+      color: #3498db; // Color del icono (azul en este caso)
+    }
   }
-  .input-field {
-    --background: transparent;
-    --highlight-color-focused: #b48e6e;
+
+  .forgot-password {
+    margin-top: 10px;
+    a {
+      color: #fafbfc; // Color del enlace (gris oscuro en este caso)
+    }
   }
-  
-  .login-button {
-    font-weight: bold;
-    --background: #FFA500;
-    color: #fff;
-    font-family: 'Montserrat', sans-serif;
-  }
-  
-  .register-link {
+
+  ion-button {
     margin-top: 20px;
+    --background: #3498db; // Color del botón (azul en este caso)
   }
-  
-  @keyframes fadeInUp {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+
+  .register-button {
+    margin-top: 20px;
+    
+    ion-button {
+      --background: #27ae60; // Color del botón de registro (verde en este caso)
+      ion-icon {
+        margin-right: 8px;
+      }
     }
   }
-  
+}
+

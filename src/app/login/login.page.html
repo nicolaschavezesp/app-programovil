@@ -1,36 +1,28 @@
-<ion-content class="ion-padding login-bg">
-  <div class="background-blur"></div>
+<ion-content class="ion-padding">
+  <div class="background"></div>
+  <div class="login-container"> 
+    <div class="logo-container">
+      <!-- Círculo con el logo -->
+      <ion-icon name="logo" class="logo-icon"></ion-icon>
+    </div>
+    <ion-input placeholder="Usuario"  clearInput>
+      <ion-icon name="person" class="user-icon" slot="end"></ion-icon>
+    </ion-input>
 
-  <ion-card class="login-card">
-    <ion-card-header>
-      <ion-img [@slideIn] src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Logo_DuocUC.svg" class="logo"></ion-img>
-    </ion-card-header>
+    <ion-input type="password" placeholder="Contraseña" clearInput>
+      <ion-icon name="lock-closed" class="password-icon" slot="end"></ion-icon>
+    </ion-input>
 
-    <ion-card-content>
-      <ion-list lines="none">
-        <ion-item class="input-field">
-          <ion-label position="floating">Usuario</ion-label>
-          <ion-input [(ngModel)]="usuario" name="usuario" type="text" required minlength="3" maxlength="8"></ion-input>
-        </ion-item>
+    <div class="forgot-password">
+      <a routerLink="/recuperar">¿Olvidaste la contraseña?</a>
+    </div>
 
-        <ion-item class="input-field">
-          <ion-label position="floating">Contraseña</ion-label>
-          <ion-input [(ngModel)]="contrasena" name="contrasena" type="password" pattern="[0-9]{4}" required></ion-input>
-        </ion-item>
-      </ion-list>
-
-      <ion-button class="login-button" expand="full" shape="round" color="secondary" (click)="agregarDatos()">Ingresar</ion-button>
-
-      <ion-button expand="full" shape="round" color="secondary" class="login-button" (click)="restablecer()">
-        Restablecer contraseña
+    <ion-button expand="full" routerLink="/homeprincipal">Iniciar sesión</ion-button>
+    
+    <div class="register-button">
+      <ion-button expand="full" routerLink="/register">Registrarse
+        <ion-icon name="person-add" slot="start"></ion-icon>
       </ion-button>
-    </ion-card-content>
-  </ion-card>
-  <ion-button expand="full" shape="round" color="secondary" class="login-button" (click)="irAregistro()">
-    Registrarse
-  </ion-button>
-  <!-- Botón para el modo docente -->
-  <ion-button expand="full" shape="round" color="secondary" class="login-button" (click)="irAModoDocente()">
-    Ir Modo Docente
-  </ion-button>
+    </div>
+  </div>
 </ion-content>
