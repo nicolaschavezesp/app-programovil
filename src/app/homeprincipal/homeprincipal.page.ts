@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { MenuController, NavController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { BrowserQRCodeReader, DecodeHintType, NotFoundException, BarcodeFormat } from '@zxing/library';
+import { BrowserQRCodeReader, DecodeHintType, BarcodeFormat } from '@zxing/library';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-homeprincipal',
@@ -9,17 +10,25 @@ import { BrowserQRCodeReader, DecodeHintType, NotFoundException, BarcodeFormat }
   styleUrls: ['homeprincipal.page.scss'],
 })
 export class HomeprincipalPage {
-  // Agrega una referencia al componente zxing-scanner
   @ViewChild('scanner') scanner: any;
-
-  // Declara la variable barcodeFormats aquí
   barcodeFormats = [BarcodeFormat.QR_CODE];
 
   constructor(
     private menuCtrl: MenuController,
     private router: Router,
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private userService: UserService
   ) {}
+
+  async ngOnInit() {
+    // Verifica si el usuario está autenticado al cargar la página
+    const isAuthenticated = await this.userService.isAuthenticated();
+
+    // Si no está autenticado, redirige a la página de inicio de sesión
+    if (!isAuthenticated) {
+      this.router.navigate(['/login']);
+    }
+  }
 
   mostrarQRClases() {
     this.router.navigate(['/home']);
@@ -31,10 +40,8 @@ export class HomeprincipalPage {
       const hints = new Map<DecodeHintType, any>();
       hints.set(DecodeHintType.POSSIBLE_FORMATS, this.barcodeFormats);
 
-      // Utiliza la referencia al componente zxing-scanner para iniciar la cámara
       await this.scanner.start();
 
-      // Actualiza la llamada al método decodeFromInputVideoDevice
       const result = await codeReader.decodeFromInputVideoDevice(undefined, 'video');
       this.handleDecodeResult(result);
     } catch (error) {
@@ -42,7 +49,6 @@ export class HomeprincipalPage {
     }
   }
 
-  // Función para manejar el resultado del escaneo
   handleDecodeResult(result: any) {
     if (result) {
       console.log('Código QR leído:', result.getText());
@@ -51,9 +57,7 @@ export class HomeprincipalPage {
     }
   }
 
-  // Agrega esta función para manejar el evento de escaneo
   handleQRScan(event: any) {
-    // Maneja el escaneo según tus necesidades
     console.log('Código QR escaneado:', event);
   }
 
@@ -63,6 +67,7 @@ export class HomeprincipalPage {
   }
 
   cerrarSesion() {
+    this.userService.logoutUser();
     this.router.navigate(['/login']);
   }
 }

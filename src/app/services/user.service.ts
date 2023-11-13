@@ -1,5 +1,3 @@
-// src/app/services/user.service.ts
-
 import { Injectable } from '@angular/core';
 import { Storage } from '@capacitor/storage';
 
@@ -8,6 +6,7 @@ import { Storage } from '@capacitor/storage';
 })
 export class UserService {
   private readonly USER_KEY = 'registered_users';
+  private readonly AUTH_KEY = 'is_authenticated';
 
   constructor() {}
 
@@ -29,11 +28,24 @@ export class UserService {
     const existingUsers = await this.getRegisteredUsers();
     const user = existingUsers.find((u) => u.email === email && u.password === password);
 
-    return !!user; // Devuelve true si el usuario es encontrado
+    if (user) {
+      await this.setAuthentication(true);  // Marcar como autenticado
+      return true;
+    } else {
+      return false;
+    }
   }
 
-  // Cambiado de private a public
-  public async getRegisteredUsers(): Promise<any[]> {
+  async isAuthenticated(): Promise<boolean> {
+    const result = await this.getAuthentication();
+    return result === 'true';
+  }
+
+  async logoutUser(): Promise<void> {
+    await this.setAuthentication(false);  // Marcar como no autenticado
+  }
+
+  private async getRegisteredUsers(): Promise<any[]> {
     const result = await Storage.get({ key: this.USER_KEY });
 
     if (result.value) {
@@ -48,5 +60,14 @@ export class UserService {
       key: this.USER_KEY,
       value: JSON.stringify(users),
     });
+  }
+
+  private async getAuthentication(): Promise<string | null> {
+    const result = await Storage.get({ key: this.AUTH_KEY });
+    return result.value;
+  }
+
+  private async setAuthentication(isAuthenticated: boolean): Promise<void> {
+    await Storage.set({ key: this.AUTH_KEY, value: isAuthenticated ? 'true' : 'false' });
   }
 }

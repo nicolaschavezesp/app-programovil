@@ -28,6 +28,8 @@ this.contrasena = params['contrasena'];
 });
 }
 
+
+
   toggleLogo() {
     this.showLogo = !this.showLogo;
   }
@@ -110,4 +112,6 @@ this.contrasena = params['contrasena'];
     // Redirige a la página de inicio de sesión (login)
     this.router.navigate(['/homeprincipal']);
   }
+
+  
 }
