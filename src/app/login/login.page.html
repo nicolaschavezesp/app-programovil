@@ -5,11 +5,11 @@
       <!-- Círculo con el logo -->
       <ion-icon name="logo" class="logo-icon"></ion-icon>
     </div>
-    <ion-input placeholder="Correo Electronico"  clearInput>
+    <ion-input placeholder="Correo Electronico" [(ngModel)]="email" clearInput>
       <ion-icon name="person" class="user-icon" slot="end"></ion-icon>
     </ion-input>
 
-    <ion-input type="password" placeholder="Contraseña" clearInput>
+    <ion-input type="password" placeholder="Contraseña" [(ngModel)]="password" clearInput>
       <ion-icon name="lock-closed" class="password-icon" slot="end"></ion-icon>
     </ion-input>
 
@@ -23,6 +23,14 @@
       <ion-button expand="full" routerLink="/register">Registrarse
         <ion-icon name="person-add" slot="start"></ion-icon>
       </ion-button>
+    </div>
+
+    <!-- Mensajes de validación -->
+    <div *ngIf="loginSuccess" class="success-message">
+      Usuario ingresado correctamente.
+    </div>
+    <div *ngIf="loginError" class="error-message">
+      Usuario o contraseña no válidos.
     </div>
   </div>
 </ion-content>

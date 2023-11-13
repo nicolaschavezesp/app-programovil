@@ -29,10 +29,11 @@ export class UserService {
     const existingUsers = await this.getRegisteredUsers();
     const user = existingUsers.find((u) => u.email === email && u.password === password);
 
-    return !!user;
+    return !!user; // Devuelve true si el usuario es encontrado
   }
 
-  private async getRegisteredUsers(): Promise<any[]> {
+  // Cambiado de private a public
+  public async getRegisteredUsers(): Promise<any[]> {
     const result = await Storage.get({ key: this.USER_KEY });
 
     if (result.value) {

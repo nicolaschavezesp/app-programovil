@@ -89,5 +89,24 @@ ion-content {
       }
     }
   }
+
+  .success-message, .error-message {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .success-message {
+    color: green;
+    background-color: #020600;  // Fondo verde claro
+  }
+  
+  .error-message {
+    color: red;
+    background-color: #040101;  // Fondo rojo claro
+  }
+  
 }
 

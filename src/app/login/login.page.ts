@@ -10,34 +10,53 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage {
-  usuario: string = '';
-  contrasena: string = '';
+  email: string = '';
+  password: string = '';
+  loginSuccess: boolean = false;
+  loginError: boolean = false;
 
   constructor(private navCtrl: NavController, private userService: UserService) {}
 
   async agregarDatos() {
     try {
       // Validar los campos
-      if (this.usuario && this.contrasena) {
-        // Intentar iniciar sesión
-        const isLoggedIn = await this.userService.loginUser(this.usuario, this.contrasena);
+      if (await this.validateCredentials()) {
+        // Navegar a la página Home si las credenciales son válidas
+        this.loginSuccess = true;
+        this.loginError = false;
 
-        if (isLoggedIn) {
-          console.log('Usuario ingresado correctamente.');
-          // Navegar a la página Home
+        // Simulando un tiempo para mostrar el mensaje antes de navegar
+        setTimeout(() => {
           this.navCtrl.navigateForward('/homeprincipal', {
             queryParams: {
-              usuario: this.usuario,
+              email: this.email,
             },
           });
-        } else {
-          console.error('Usuario o contraseña inválidos.');
-        }
+        }, 1000);
       } else {
-        console.error('Ingrese un usuario y contraseña válidos.');
+        this.loginSuccess = false;
+        this.loginError = true;
       }
     } catch (error) {
       console.error('Error al procesar la solicitud:', error);
+    }
+  }
+
+  async validateCredentials(): Promise<boolean> {
+    try {
+      // Validar las credenciales
+      const isValid = await this.userService.loginUser(this.email, this.password);
+
+      if (isValid) {
+        console.log('Usuario ingresado correctamente.');
+        return true;
+      } else {
+        console.error('Usuario o contraseña inválidos.');
+        return false;
+      }
+    } catch (error) {
+      console.error('Error al validar las credenciales:', error);
+      return false;
     }
   }
 
