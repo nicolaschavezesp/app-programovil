@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import { ApiService } from './api.service';
-import { Plugins } from '@capacitor/core';
-import { NavController } from '@ionic/angular';
+// src/app/register/register.page.ts
 
-const { Storage } = Plugins;
+import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
+import { ApiService } from './api.service';  // Asegúrate de tener la ruta correcta
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -21,7 +21,7 @@ export class RegisterPage {
     commune: '',
   };
 
-  constructor(private apiService: ApiService, private navCtrl: NavController) {}
+  constructor(private apiService: ApiService, private userService: UserService, private navCtrl: NavController) {}
 
   ionViewDidEnter() {
     this.loadRegions();
@@ -44,23 +44,31 @@ export class RegisterPage {
       // Muestra los datos antes de guardar
       console.log('Datos antes de guardar:', this.userData);
 
-      // Guarda los datos en Capacitor Preferences
-      await (Storage as any).set({
-        key: 'userData',
-        value: JSON.stringify(this.userData),
-      });
-
-      // Muestra un mensaje indicando que los datos se han guardado
-      console.log('Datos guardados correctamente.');
-
-      // Navegar a la página de inicio después del registro
-      this.navCtrl.navigateForward('/login');
-
-      // Obtiene los datos almacenados para verificar
-      const storedData = await (Storage as any).get({ key: 'userData' });
-      console.log('Datos almacenados:', storedData.value);
+      // Validar los campos antes de registrar
+      if (this.validateFields()) {
+        // Intentar registrar al usuario
+        this.userService.registerUser(this.userData.email, this.userData.password)
+          .then(() => {
+            console.log('Usuario registrado con éxito.');
+            // Navegar a la página de inicio de sesión después del registro exitoso
+            this.navCtrl.navigateBack('/login');
+          })
+          .catch((error) => {
+            console.error('Error al registrar el usuario:', error);
+          });
+      }
     } catch (error) {
-      console.error('Error al guardar los datos:', error);
+      console.error('Error en el registro:', error);
+    }
+  }
+
+  validateFields(): boolean {
+    // Realizar validaciones adicionales si es necesario
+    if (this.userData.email && this.userData.password) {
+      return true;
+    } else {
+      console.error('Por favor, complete todos los campos.');
+      return false;
     }
   }
 

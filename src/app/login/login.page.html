@@ -5,7 +5,7 @@
       <!-- Círculo con el logo -->
       <ion-icon name="logo" class="logo-icon"></ion-icon>
     </div>
-    <ion-input placeholder="Usuario"  clearInput>
+    <ion-input placeholder="Correo Electronico"  clearInput>
       <ion-icon name="person" class="user-icon" slot="end"></ion-icon>
     </ion-input>
 
@@ -17,7 +17,7 @@
       <a routerLink="/recuperar">¿Olvidaste la contraseña?</a>
     </div>
 
-    <ion-button expand="full" routerLink="/homeprincipal">Iniciar sesión</ion-button>
+    <ion-button expand="full" (click)="agregarDatos()">Iniciar sesión</ion-button>
     
     <div class="register-button">
       <ion-button expand="full" routerLink="/register">Registrarse

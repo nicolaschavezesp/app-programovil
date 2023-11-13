@@ -1,3 +1,5 @@
+// capacitor-config.ts
+
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
@@ -6,6 +8,11 @@ const config: CapacitorConfig = {
   webDir: 'www',
   server: {
     androidScheme: 'https'
+  },
+  plugins: {
+    Storage: {
+      allowed: ["get", "set", "remove"]
+    }
   }
 };
 
