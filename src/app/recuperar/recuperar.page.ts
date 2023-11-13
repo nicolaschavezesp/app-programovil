@@ -2,7 +2,7 @@
 
 import { Component } from '@angular/core';
 import { NavController, ToastController } from '@ionic/angular';
-import { UserService } from '../services/user.service';  // Importa tu servicio de usuario
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-recuperar',
@@ -11,6 +11,9 @@ import { UserService } from '../services/user.service';  // Importa tu servicio 
 })
 export class RecuperarPage {
   usuario: string = '';
+  cambioContrasena: boolean = false;
+  nuevaContrasena: string = '';
+  confirmarContrasena: string = '';
 
   constructor(
     private navCtrl: NavController,
@@ -22,14 +25,20 @@ export class RecuperarPage {
     try {
       // Validar los campos
       if (this.isValidUser(this.usuario)) {
-        // Intenta recuperar la contraseña
-        const result = await this.userService.recoverPassword(this.usuario);
-        if (result) {
-          // Muestra un mensaje de éxito o redirige a otra página
-          await this.presentToast(result);
+        if (this.cambioContrasena) {
+          // Cambiar la contraseña
+          await this.cambiarContrasena();
         } else {
-          // Muestra un mensaje de error (usuario no encontrado)
-          await this.presentToast('Usuario no encontrado.');
+          // Intenta recuperar la contraseña
+          const result = await this.userService.recoverPassword(this.usuario);
+          if (result) {
+            // Muestra un mensaje de éxito y habilita el cambio de contraseña
+            await this.presentToast(result);
+            this.cambioContrasena = true;
+          } else {
+            // Muestra un mensaje de error (usuario no encontrado)
+            await this.presentToast('Usuario no encontrado.');
+          }
         }
       } else {
         // Muestra un mensaje de error
@@ -37,6 +46,25 @@ export class RecuperarPage {
       }
     } catch (error) {
       console.error('Error al recuperar la contraseña:', error);
+    }
+  }
+
+  async cambiarContrasena() {
+    try {
+      // Validar que las contraseñas coincidan
+      if (this.nuevaContrasena === this.confirmarContrasena) {
+        // Implementa la lógica para cambiar la contraseña usando this.nuevaContrasena
+        await this.userService.changePassword(this.usuario, this.nuevaContrasena);
+
+        // Muestra un mensaje de éxito y vuelve al login
+        await this.presentToast('Contraseña cambiada exitosamente.');
+        this.navCtrl.navigateBack('/login');
+      } else {
+        // Muestra un mensaje de error (contraseñas no coinciden)
+        await this.presentToast('Las contraseñas no coinciden.');
+      }
+    } catch (error) {
+      console.error('Error al cambiar la contraseña:', error);
     }
   }
 

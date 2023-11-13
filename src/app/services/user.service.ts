@@ -2,6 +2,7 @@
 
 import { Injectable } from '@angular/core';
 import { Storage } from '@capacitor/storage';
+import { EmailService } from './email.service';  // Ajusta la ruta según tu estructura de archivos
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class UserService {
   private readonly USER_KEY = 'registered_users';
   private readonly AUTH_KEY = 'is_authenticated';
 
-  constructor() {}
+  constructor(private emailService: EmailService) {}
 
   async registerUser(email: string, password: string): Promise<void> {
     const existingUsers = await this.getRegisteredUsers();
@@ -43,11 +44,30 @@ export class UserService {
 
     if (user) {
       // Enviar correo electrónico con la contraseña al usuario
-      await this.sendPasswordRecoveryEmail(user.email, user.password);
-      return 'Se ha enviado un correo electrónico con la contraseña.';
+      this.emailService.sendPasswordEmail(user.email, user.password);
+      return 'Usuario valido, ingrese su nueva contraseña';
     } else {
       return null; // Usuario no encontrado
     }
+  }
+
+  async getUserByEmail(email: string): Promise<any | null> {
+    const existingUsers = await this.getRegisteredUsers();
+    const user = existingUsers.find((u) => u.email === email);
+    return user || null;
+  }
+
+  async changePassword(email: string, newPassword: string): Promise<void> {
+    const existingUsers = await this.getRegisteredUsers();
+    const updatedUsers = existingUsers.map((user) => {
+      if (user.email === email) {
+        return { ...user, password: newPassword };
+      } else {
+        return user;
+      }
+    });
+
+    await this.saveRegisteredUsers(updatedUsers);
   }
 
   async isAuthenticated(): Promise<boolean> {
@@ -74,12 +94,6 @@ export class UserService {
       key: this.USER_KEY,
       value: JSON.stringify(users),
     });
-  }
-
-  private async sendPasswordRecoveryEmail(email: string, password: string): Promise<void> {
-    // Implementa la lógica para enviar un correo electrónico con la contraseña
-    // Aquí deberías usar un servicio de envío de correo electrónico o configurar tu propio servidor de correo
-    console.log(`Enviando correo electrónico a ${email} con la contraseña: ${password}`);
   }
 
   private async getAuthentication(): Promise<string | null> {

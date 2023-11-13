@@ -13,9 +13,21 @@
   </ion-header>
   <div class="background"></div>
   <div class="login-container">
-    <ion-input [(ngModel)]="usuario" placeholder="Correo Electrónico" clearInput></ion-input>
-    <ion-button expand="full" class="login-button" (click)="recuperarDatos()">
-      Recuperar
-    </ion-button>
+    <ng-container *ngIf="!cambioContrasena; else cambioContrasenaTemplate">
+      <!-- Mostrar este bloque si no se ha iniciado el proceso de cambio de contraseña -->
+      <ion-input [(ngModel)]="usuario" placeholder="Correo Electrónico" clearInput></ion-input>
+      <ion-button expand="full" class="login-button" (click)="recuperarDatos()">
+        Recuperar
+      </ion-button>
+    </ng-container>
+
+    <ng-template #cambioContrasenaTemplate>
+      <!-- Mostrar este bloque si se ha iniciado el proceso de cambio de contraseña -->
+      <ion-input [(ngModel)]="nuevaContrasena" type="password" placeholder="Nueva Contraseña" clearInput></ion-input>
+      <ion-input [(ngModel)]="confirmarContrasena" type="password" placeholder="Confirmar Contraseña" clearInput></ion-input>
+      <ion-button expand="full" class="login-button" (click)="cambiarContrasena()">
+        Cambiar Contraseña
+      </ion-button>
+    </ng-template>
   </div>
 </ion-content>
