@@ -27,12 +27,18 @@
       <ion-icon name="qr-code-outline" class="album-icon"></ion-icon>
     </ion-card>
 
-    <ion-card class="album" >
+    <ion-card class="album" (click)="lectorQR()">
       <ion-card-header>
         <ion-card-title>Lector QR</ion-card-title>
       </ion-card-header>
-      <ion-icon name="camera-outline" class="album-icon"></ion-icon>
+      <zxing-scanner
+        [torch]="false"
+        [disable]="false"
+        [formats]="barcodeFormats"
+        (scanSuccess)="handleQRScan($event)"
+      ></zxing-scanner>
     </ion-card>
+    
   </div>
 
   <ion-row class="ion-padding">
