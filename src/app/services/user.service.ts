@@ -13,9 +13,9 @@ export class UserService {
 
   constructor(private emailService: EmailService) {}
 
-  async registerUser(email: string, password: string): Promise<void> {
+  async registerUser(name: string, rut: string, email: string, password: string, region: number, commune: number): Promise<void> {
     const existingUsers = await this.getRegisteredUsers();
-    const newUser = { email, password };
+    const newUser = { name, rut, email, password, region, commune };
 
     const isUserExists = existingUsers.some((user) => user.email === newUser.email);
 

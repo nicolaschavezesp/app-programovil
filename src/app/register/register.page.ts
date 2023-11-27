@@ -47,7 +47,7 @@ export class RegisterPage {
       // Validar los campos antes de registrar
       if (this.validateFields()) {
         // Intentar registrar al usuario
-        this.userService.registerUser(this.userData.email, this.userData.password)
+        this.userService.registerUser(this.userData.name, this.userData.rut, this.userData.email, this.userData.password, this.userData.region, this.userData.commune)
           .then(() => {
             console.log('Usuario registrado con éxito.');
             // Navegar a la página de inicio de sesión después del registro exitoso
