@@ -49,19 +49,38 @@ export class HomeprincipalPage {
     }
   }
 
-  handleDecodeResult(result: any) {
-    if (result) {
-      console.log('Código QR leído:', result.getText());
-      this.router.navigate(['/login']);
-    } else {
-      console.log('No se detectó ningún código QR.');
-    }
-  }
+qrCodeText: string = ''; // Variable para almacenar el texto del código QR
+scannedQRLink: string = '';
+scannedLocation: string = ''; 
 
-  handleQRScan(event: any) {
-    this.router.navigate(['/perfil'])
-    console.log('Código QR escaneado:', event);
+handleDecodeResult(result: any) {
+  if (result) {
+    this.qrCodeText = result.getText(); // Almacena el texto del QR
+    this.router.navigate(['/login']);
+  } else {
+    this.qrCodeText = 'No se detectó ningún código QR.';
   }
+}
+  
+handleQRScan(event: any) {
+  // Imprimir el texto del código QR escaneado
+  this.scannedQRLink = event;
+  console.log('Código QR escaneado:', event);
+
+  // Aquí podrías intentar acceder a la ubicación si está disponible
+  // Esto dependerá de la plataforma y los permisos del dispositivo
+  // Por ejemplo:
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition((position) => {
+      this.scannedLocation = `Latitud: ${position.coords.latitude}, Longitud: ${position.coords.longitude}`;
+      console.log('Ubicación del escaneo:', position.coords.latitude, position.coords.longitude);
+    }, (error) => {
+      console.error('Error al obtener la ubicación:', error);
+    });
+  } else {
+    console.log('La geolocalización no está disponible en este dispositivo.');
+  }
+}
 
   abrirMenu() {
     console.log('Abriendo menú...');

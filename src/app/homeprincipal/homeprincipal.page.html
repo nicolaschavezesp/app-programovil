@@ -18,6 +18,7 @@
   </ion-toolbar>
 </ion-header>
 
+
 <ion-content class="ion-padding">
   <div class="album-container">
     <ion-card class="album" (click)="mostrarQRClases()">
@@ -26,6 +27,13 @@
       </ion-card-header>
       <ion-icon name="qr-code-outline" class="album-icon"></ion-icon>
     </ion-card>
+
+
+
+  
+
+
+
 
     <ion-card class="album" (click)="lectorQR()">
       <ion-card-header>
@@ -38,6 +46,26 @@
         (scanSuccess)="handleQRScan($event)"
       ></zxing-scanner>
     </ion-card>
+
+    <ion-card *ngIf="scannedQRLink">
+      <ion-card-header>
+        <ion-card-title>Enlace del Código QR</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <a [href]="scannedQRLink" target="_blank">{{ scannedQRLink }}</a>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card *ngIf="scannedLocation">
+      <ion-card-header>
+        <ion-card-title>Ubicación del Escaneo</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        {{ scannedLocation }}
+      </ion-card-content>
+    </ion-card>
+  
+
     
   </div>
 
@@ -46,8 +74,13 @@
       <img src="assets/REGISTRAFOTO.png" alt="Imagen 1">
     </ion-col>
 
+    
+    
+
 
   </ion-row>
+
+  
 
 
 
